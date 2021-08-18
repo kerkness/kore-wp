@@ -10,26 +10,23 @@ use ReflectionClass;
  */
 class KoreWP
 {
-    public $file;
+    const FILE = __FILE__;
     public $template;
 
-    public static function factory($file)
+    public static function factory()
     {
-        $instance = new KoreWP($file);
-
+        $instance = new KoreWP();
         return $instance;
     }
 
-    public function __construct($file) 
+    public function __construct() 
     {
-        $this->file = $file;
+        $this->template = new Template();
     }
 
     public function dir()
     {
-        $reflector = new ReflectionClass(get_class(self::class));
-        $fn = $reflector->getFileName();
-        return dirname($fn);
+        return dirname($this::FILE);
     }
 
     /**
