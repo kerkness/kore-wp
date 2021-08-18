@@ -1,0 +1,19 @@
+{
+    "name": "kerkness/kore-wp",
+    "description": "Common classes for building wordpress plugins",
+    "type": "wordpress-plugin",
+    "license": "GNU",
+    "autoload": {
+        "psr-4": {
+            "Kerkness\\KoreWp\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "kerkness",
+            "email": "ryan@kerkness.ca"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {}
+}
