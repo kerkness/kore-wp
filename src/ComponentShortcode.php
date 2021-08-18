@@ -18,14 +18,14 @@ class ComponentShortcode
      */
     public static function init($components, $styles, $localized = [])
     {
-        $instance = new ComponentShortcode();
-        $instance->actions($components, $styles, $localized);
+        $instance = new ComponentShortcode($components, $styles, $localized);
+        $instance->actions();
     }
 
     /**
      * Create the class
      */
-    public function __construct($components, $styles, $localized)
+    public function __construct($components, $styles, $localized = [])
     {
         $this->components = $components;
         $this->styles = $styles;
