@@ -57,7 +57,7 @@ class ComponentShortcode
 
         wp_enqueue_script(
             'kore-component',
-            KoreWP::plugin_dir() . $this->components,
+            KoreWP::plugin_url() . $this->components,
             [
                 'wp-element',
                 'wp-i18n',
