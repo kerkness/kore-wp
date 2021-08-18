@@ -34,7 +34,7 @@ class Template {
     /**
      * Initialize a new view context.
      */
-    public function __construct($kore, $template = "") {
+    public function __construct($template = "") {
         if ($template) {
             $this->set_template($template);
         }

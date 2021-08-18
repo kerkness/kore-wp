@@ -22,12 +22,13 @@ class KoreWP
     public function __construct($file) 
     {
         $this->file = $file;
-        $this->template = new Template();
     }
 
-
-    public static function reflection()
+    public static function dir()
     {
+        $reflector = new ReflectionClass(self);
+        $fn = $reflector->getFileName();
+        return dirname($fn);
     }
 
     /**
@@ -36,7 +37,7 @@ class KoreWP
     public static function plugin_name()
     {
         $wp_plugin_dir = WP_PLUGIN_DIR;
-        $dir = __DIR__;
+        $dir = $this->dir();
         $local_path = str_replace($wp_plugin_dir . '/', '', $dir);
         $path_array = explode('/', $local_path);
         return reset($path_array);
