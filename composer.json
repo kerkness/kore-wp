@@ -14,6 +14,5 @@
             "email": "ryan@kerkness.ca"
         }
     ],
-    "minimum-stability": "stable",
     "require": {}
 }
