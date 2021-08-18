@@ -1,7 +1,7 @@
 {
     "name": "kerkness/kore-wp",
     "description": "Common classes for building wordpress plugins",
-    "type": "wordpress-plugin",
+    "type": "library",
     "license": "GPL-2.0-or-later",
     "autoload": {
         "psr-4": {
