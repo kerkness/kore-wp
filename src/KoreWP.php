@@ -14,7 +14,9 @@ class KoreWP
     {
         $wp_plugin_dir = WP_PLUGIN_DIR;
         $dir = __DIR__;
-        return reset(explode('/', str_replace($wp_plugin_dir . '/', '', $dir)));
+        $local_path = str_replace($wp_plugin_dir . '/', '', $dir);
+        $path_array = explode('/', $local_path);
+        return reset($path_array);
     }
 
     /**
