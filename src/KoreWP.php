@@ -25,9 +25,9 @@ class KoreWP
         $this->file = $file;
     }
 
-    public static function dir()
+    public function dir()
     {
-        $reflector = new ReflectionClass(get_class(self));
+        $reflector = new ReflectionClass(get_class(self::class));
         $fn = $reflector->getFileName();
         return dirname($fn);
     }
