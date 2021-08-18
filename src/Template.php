@@ -9,16 +9,20 @@ use Kerkness\KoreWP\KoreWP;
  */
 class Template {
 
-    public static $instance;
-
-    public static function factory($template)
+    /**
+     * Factory method creates instance of class
+     */
+    public static function factory($template = "")
     {
         return new Template($template);
     }
 
+    /**
+     * Static method for rendering template file
+     */
     public static function render( $template, $params = [] )
     {
-        return self::factory($template)->render_view($params);
+        echo self::factory($template)->render_view($params);
     }
 
     /**
@@ -29,8 +33,10 @@ class Template {
     /**
      * Initialize a new view context.
      */
-    public function __construct($template) {
-        $this->set_template($template);
+    public function __construct($template = "") {
+        if ($template) {
+            $this->set_template($template);
+        }
     }
 
     /**
@@ -45,7 +51,7 @@ class Template {
      * Get the default template directory
      */
     public function template_directory() {
-        return KoreWP::plugin_dir() . '/src/templates';
+        return KoreWP::plugin_dir() . '/templates';
     }
 
     /**
@@ -83,17 +89,10 @@ class Template {
             return;
         }
 
-
+        // Set the template location
         $this->template = $this->path($this->template_directory(), '404');;
 
     }
-
-    /**
-     * Safely escape/encode the provided data.
-     */
-    // public function h($data) {
-    //     return htmlspecialchars((string) $data, ENT_QUOTES, 'UTF-8');
-    // }
 
     /**
      * Render the template, returning it's content.
@@ -108,4 +107,5 @@ class Template {
         ob_end_clean();
         return $content;
     }
+
 }

@@ -4,24 +4,35 @@ namespace Kerkness\KoreWP;
 
 use Kerkness\KoreWP\KoreWP;
 
-class ReactCode
+/**
+ * Creates a short code which will enable the embedding of custom react components
+ */
+class ComponentShortcode
 {
     public $components = '';
     public $styles = '';
+    public $localized = [];
 
-    public static function factory($components, $styles)
+    /**
+     * Static class factory
+     */
+    public static function init($components, $styles, $localized = [])
     {
-        $instance = new ReactCode();
-        $instance->init($components, $styles);
+        $instance = new ComponentShortcode();
+        $instance->actions($components, $styles, $localized);
     }
 
-    public function __construct($components, $styles)
+    /**
+     * Create the class
+     */
+    public function __construct($components, $styles, $localized)
     {
         $this->components = $components;
         $this->styles = $styles;
+        $this->localized = $localized;
     }
 
-    public function init()
+    public function actions()
     {
         add_action('wp_enqueue_scripts', [$this, 'wp_enqueue_scripts_js']);
         add_action('wp_enqueue_scripts', [$this, 'wp_enqueue_scripts_styles']);
@@ -61,16 +72,13 @@ class ReactCode
             true
         );
 
-        wp_localize_script(
-            'kore-component',
-            'mfa',
-            [
-                'query' => $_GET,
-                'current_user' => get_current_user(),
-                'current_user_id' => get_current_user_id(),
-                'has_api_key' => get_option('wp_hubspot_props_api_key') ? true : false,
-            ]
-        );
+        if ($this->localized) {
+            wp_localize_script(
+                'kore-component',
+                'kore',
+                $this->localized
+            );    
+        }
 
     }
 
