@@ -1,6 +1,8 @@
 # kore-wp
 
-Common classes and features for wordpress plugin development
+Common classes and features for wordpress plugin development.
+
+NOTE:  Adding `__FILE__` to class creation as exampled below will localize the class to the plugin it's being used in. Otherwise conflicts may arrise if more than one plugin uses `KoreWP` which is the intension.
 
 ## Kerkness\KoreWP\KoreWP ##
 
