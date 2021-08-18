@@ -27,7 +27,7 @@ class KoreWP
 
     public static function dir()
     {
-        $reflector = new ReflectionClass(self::class);
+        $reflector = new ReflectionClass(get_class(self));
         $fn = $reflector->getFileName();
         return dirname($fn);
     }
