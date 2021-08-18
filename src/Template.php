@@ -9,12 +9,13 @@ use Kerkness\KoreWP\KoreWP;
  */
 class Template {
 
+
     /**
      * Factory method creates instance of class
      */
     public static function factory($template = "")
     {
-        return new Template($template);
+        return new Template($kore, $template);
     }
 
     /**
@@ -33,7 +34,7 @@ class Template {
     /**
      * Initialize a new view context.
      */
-    public function __construct($template = "") {
+    public function __construct($kore, $template = "") {
         if ($template) {
             $this->set_template($template);
         }

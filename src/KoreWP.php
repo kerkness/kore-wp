@@ -2,12 +2,15 @@
 
 namespace Kerkness\KoreWP;
 
+use Kerkness\KoreWP\Template;
+
 /**
  * Generic helper functions
  */
 class KoreWP
 {
     public $file;
+    public $template;
 
     public static function factory($file)
     {
@@ -19,12 +22,12 @@ class KoreWP
     public function __construct($file) 
     {
         $this->file = $file;
+        $this->template = new Template();
     }
 
 
     public static function reflection()
     {
-        ReflectionClass::getFileName('');
     }
 
     /**
