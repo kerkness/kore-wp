@@ -9,21 +9,22 @@ use Kerkness\KoreWP\KoreWP;
  */
 class Template {
 
+    public $kore;
 
     /**
      * Factory method creates instance of class
      */
-    public static function factory($template = "")
+    public static function factory($template = "", $file = __FILE__)
     {
-        return new Template($kore, $template);
+        return new Template($kore, $template, $file);
     }
 
     /**
      * Static method for rendering template file
      */
-    public static function render( $template, $params = [] )
+    public static function render( $template, $params = [], $file = __FILE__ )
     {
-        echo self::factory($template)->render_view($params);
+        echo self::factory($template, $file)->render_view($params);
     }
 
     /**
@@ -34,7 +35,10 @@ class Template {
     /**
      * Initialize a new view context.
      */
-    public function __construct($template = "") {
+    public function __construct($template = "", $file) {
+
+        $this->kore = KoreWP::factory($file);
+
         if ($template) {
             $this->set_template($template);
         }
@@ -52,7 +56,7 @@ class Template {
      * Get the default template directory
      */
     public function template_directory() {
-        return KoreWP::plugin_dir() . '/templates';
+        return $this->kore->plugin_dir() . '/templates';
     }
 
     /**
