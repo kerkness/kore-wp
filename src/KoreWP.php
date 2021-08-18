@@ -12,7 +12,9 @@ class KoreWP
      */
     public static function plugin_name()
     {
-        return reset(explode('/', str_replace(WP_PLUGIN_DIR . '/', '', __DIR__)));
+        $wp_plugin_dir = WP_PLUGIN_DIR;
+        $dir = __DIR__;
+        return reset(explode('/', str_replace($wp_plugin_dir . '/', '', $dir)));
     }
 
     /**
@@ -20,7 +22,8 @@ class KoreWP
      */
     public static function plugin_dir()
     {
-        return WP_PLUGIN_DIR . '/' . self::plugin_name();
+        $wp_plugin_dir = WP_PLUGIN_DIR;
+        return $wp_plugin_dir . '/' . self::plugin_name();
     }
 
     /**
