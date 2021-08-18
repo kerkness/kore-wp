@@ -7,6 +7,26 @@ namespace Kerkness\KoreWP;
  */
 class KoreWP
 {
+    public $file;
+
+    public static function factory($file)
+    {
+        $instance = new KoreWP($file);
+
+        return $instance;
+    }
+
+    public function __construct($file) 
+    {
+        $this->file = $file;
+    }
+
+
+    public static function reflection()
+    {
+        ReflectionClass::getFileName('');
+    }
+
     /**
      * Get the current plugin name
      */
