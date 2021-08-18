@@ -9,6 +9,7 @@ use Kerkness\KoreWP\KoreWP;
  */
 class ComponentShortcode
 {
+    public $kore;
     public $components = '';
     public $styles = '';
     public $localized = [];
@@ -16,17 +17,18 @@ class ComponentShortcode
     /**
      * Static class factory
      */
-    public static function init($components, $styles, $localized = [])
+    public static function init($components, $styles, $localized = [], $file = __FILE__)
     {
-        $instance = new ComponentShortcode($components, $styles, $localized);
+        $instance = new ComponentShortcode($components, $styles, $localized, $file);
         $instance->actions();
     }
 
     /**
      * Create the class
      */
-    public function __construct($components, $styles, $localized = [])
+    public function __construct($components, $styles, $localized = [], $file = __FILE__)
     {
+        $this->kore = KoreWP::factory($file);
         $this->components = $components;
         $this->styles = $styles;
         $this->localized = $localized;
@@ -45,7 +47,7 @@ class ComponentShortcode
         // Register the CSS like this for a plugin:
         wp_enqueue_style(
             'kore-component',
-            KoreWP::plugin_url() . $this->styles,
+            $this->kore->plugin_url() . $this->styles,
             [],
             time(),
             'all'
@@ -57,7 +59,7 @@ class ComponentShortcode
 
         wp_enqueue_script(
             'kore-component',
-            KoreWP::plugin_url() . $this->components,
+            $this->kore->plugin_url() . $this->components,
             [
                 'wp-element',
                 'wp-i18n',
