@@ -3,6 +3,7 @@
 namespace Kerkness\KoreWP;
 
 use Kerkness\KoreWP\Template;
+use ReflectionClass;
 
 /**
  * Generic helper functions
