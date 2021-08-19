@@ -1,6 +1,8 @@
 # kore-wp
 
-Common classes and features for wordpress plugin development
+Common classes and features for wordpress plugin development.
+
+NOTE:  Adding `__FILE__` to class creation as exampled below will localize the class to the plugin it's being used in. Otherwise conflicts may arrise if more than one plugin uses `KoreWP` which is the intension.
 
 ## Kerkness\KoreWP\KoreWP ##
 
@@ -56,9 +58,9 @@ my-folder/custom-path/template-file.php
 <h1>Hello <?php echo $name ?></h1>
 ```
 ```
-$template = Template::factory("", __FILE__);
+$template = Template::factory(__FILE__);
 $template->set_template('my-folder/custom-path/template-file');
-$content = $template->render([ 'name' => 'World' ]);
+$content = $template->render_view([ 'name' => 'World' ]);
 echo $content;
 ```
 
