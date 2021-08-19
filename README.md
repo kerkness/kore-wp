@@ -60,7 +60,7 @@ my-folder/custom-path/template-file.php
 ```
 $template = Template::factory(__FILE__);
 $template->set_template('my-folder/custom-path/template-file');
-$content = $template->render([ 'name' => 'World' ]);
+$content = $template->render_view([ 'name' => 'World' ]);
 echo $content;
 ```
 
