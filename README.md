@@ -58,7 +58,7 @@ my-folder/custom-path/template-file.php
 <h1>Hello <?php echo $name ?></h1>
 ```
 ```
-$template = Template::factory("", __FILE__);
+$template = Template::factory(__FILE__);
 $template->set_template('my-folder/custom-path/template-file');
 $content = $template->render([ 'name' => 'World' ]);
 echo $content;
