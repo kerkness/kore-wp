@@ -14,9 +14,9 @@ class Template {
     /**
      * Factory method creates instance of class
      */
-    public static function factory($template = "", $file = __FILE__)
+    public static function factory($file = __FILE__, $template = "")
     {
-        return new Template($template, $file);
+        return new Template($file, $template);
     }
 
     /**
@@ -24,7 +24,7 @@ class Template {
      */
     public static function render( $template, $params = [], $file = __FILE__ )
     {
-        echo self::factory($template, $file)->render_view($params);
+        echo self::factory($file, $template)->render_view($params);
     }
 
     /**
@@ -35,7 +35,7 @@ class Template {
     /**
      * Initialize a new view context.
      */
-    public function __construct($template = "", $file) {
+    public function __construct($file, $template = "") {
 
         $this->kore = KoreWP::factory($file);
 
