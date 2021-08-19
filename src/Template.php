@@ -16,7 +16,7 @@ class Template {
      */
     public static function factory($template = "", $file = __FILE__)
     {
-        return new Template($kore, $template, $file);
+        return new Template($template, $file);
     }
 
     /**
